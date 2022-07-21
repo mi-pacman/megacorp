@@ -20,6 +20,7 @@ alias poweron-pc='sudo docker run -d \
 -v /home/vagrant/.aws/credentials:/root/.aws/credentials:ro \
 -v /vagrant/cloud/images:/root/images:ro \
 -v /vagrant/cloud/keys:/root/keys:ro \
+-v /vagrant/configs:/root/configs:ro \
 -v /vagrant/scripts:/root/scripts:ro \
 -p 2223:22 \
 -h packerController \
