@@ -7,9 +7,7 @@ timedatectl set-timezone Australia/Adelaide  # Set timezone to Adelaide
 echo "rapture" > /etc/hostname  # Change the hostname
 systemctl enable systemd-timesyncd  # Enable timesync daemon on boot
 echo "vagrant:changeme" | chpasswd  # Change vagrants password to changeme
-
 cp /vagrant/configs/bash_aliases /home/vagrant/.bash_aliases
-chown vagrant:vagrant /home/vagrant/.bash_aliases
 
 ##########################
 ###DOCKER_CONFIGURATION###
@@ -24,7 +22,7 @@ docker pull midockerdb/packer-controller:0.1.2  # Pull custom packer container i
 ###CLOUD_CONFIGURATION###
 #########################
 mkdir /home/vagrant/.aws
-echo "[default]\naws_access_key_id = <ACCESS_KEY>\naws_secret_access_key = <SECRET_KEY>" > .aws/credentials
-chown -R vagrant:vagrant /home/vagrant/.aws
+printf '[default]\naws_access_key_id = <ACCESS_KEY>\naws_secret_access_key = <SECRET_KEY>' > .aws/credentials
+chown -R vagrant:vagrant /home/vagrant
 
 reboot
