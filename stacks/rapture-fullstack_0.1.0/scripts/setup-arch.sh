@@ -14,11 +14,11 @@ chown vagrant:vagrant /home/vagrant/.bash_aliases
 ##########################
 ###DOCKER_CONFIGURATION###
 ##########################
-#pacman -Sy  # Update repos
-#pacman -S --noconfirm docker docker-compose  # Update repositories, install docker and compose
-#systemctl enable docker && systemctl start docker  # Enable and start docker daemon on boot
-#docker pull midockerdb/terraform-controller:0.1.2  # Pull custom terraform container image
-#docker pull midockerdb/packer-controller:0.1.2  # Pull custom packer container image
+pacman -Sy  # Update repos
+pacman -S --noconfirm docker docker-compose  # Update repositories, install docker and compose
+systemctl enable docker && systemctl start docker  # Enable and start docker daemon on boot
+docker pull midockerdb/terraform-controller:0.1.2  # Pull custom terraform container image
+docker pull midockerdb/packer-controller:0.1.2  # Pull custom packer container image
 
 #########################
 ###CLOUD_CONFIGURATION###

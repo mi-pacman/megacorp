@@ -1,0 +1,43 @@
+version: '2'
+
+volumes:
+  traefik-ssl-certs:
+    driver: local
+
+services:
+  traefik:
+    image: traefik
+    ports:
+      - "80:80"
+      - "443:443"
+      # (Optional) Expose Dashboard
+      #- "8080:8080"  # Don't do this in production!
+    volumes:
+      - /etc/traefik:/etc/traefik
+      - traefik-ssl-certs:/ssl-certs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.6
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=bn_myapp
+      - MARIADB_DATABASE=bitnami_myapp
+  myapp:
+    image: docker.io/bitnami/laravel:9
+    environment:
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_USERNAME=bn_myapp
+      - DB_DATABASE=bitnami_myapp
+    volumes:
+      - './laravel-app:/app'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.laravel.entrypoints=web, websecure"
+      - "traefik.http.routers.laravel.rule=Host(`<DOMAIN_NAME>`)"
+      - "traefik.http.routers.laravel.tls=true"
+      - "traefik.http.routers.laravel.tls.certresolver=production"
+      - "traefik.http.services.laravel.loadbalancer.server.port=8000"
+    depends_on:
+      - mariadb
