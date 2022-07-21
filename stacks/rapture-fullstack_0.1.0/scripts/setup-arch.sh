@@ -29,6 +29,6 @@ chown -R vagrant:vagrant /home/vagrant
 ###PERSONAL_CUSTOMIZATION###
 ############################
 cp /vagrant/scripts/update_motd.sh /usr/bin/update_motd.sh
-chmod 775 /usr/bin/update_motd.sh
+#chmod 775 /usr/bin/update_motd.sh
 #printf 'session   optional   pam_exec.so   stdout /usr/bin/update_motd.sh\nsession   optional   pam_motd.so   motd=/etc/motd' >> /etc/pam.d/sshd
 reboot
