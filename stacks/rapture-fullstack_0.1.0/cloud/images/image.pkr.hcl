@@ -30,10 +30,10 @@ build {
   sources = ["source.amazon-ebs.controller"]
 
   provisioner "file" {
-    source      = "tf-packer.pub"
+    source      = "../keys/tf-packer.pub"
     destination = "/tmp/tf-packer.pub"
   }
   provisioner "shell" {
-    script = "../../scripts/setup-ubuntu.sh"
+    script = "../scripts/setup-ubuntu.sh"
   }
 }
