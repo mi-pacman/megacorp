@@ -12,9 +12,6 @@ alias poweron-pc='sudo docker run -v /home/vagrant/.aws/credentials:/root/.aws/c
 alias connect-pc='ssh -p 2223 root@localhost'
 alias poweroff-pc='sudo docker stop packer_controller && sudo docker rm packer_controller'
 
-#Generate SSH Key
-alias generate-key='ssh-keygen -t ed25519 -f /vagrant/cloud/keys/tf-packer'
-
 #Fetch terraform public_ip output from container
 alias terraformipraw='sudo docker exec -it terraform_controller terraform output --state /root/instances/terraform.tfstate public_ip'
 alias terraformip="terraformipraw | sed 's/\"//g'"  # Removes "" from output
