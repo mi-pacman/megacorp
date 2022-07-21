@@ -2,6 +2,7 @@
 .terraform*
 terraform*
 tf-packer*
+.aws*
 .ash_histroy*
 
 /node_modules
