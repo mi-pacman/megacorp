@@ -8,12 +8,12 @@ alias poweroff-tc='sudo docker stop terraform_controller && sudo docker rm terra
 #######################
 ###Packer Controller###
 #######################
-alias poweron-pc='sudo docker run -v /home/vagrant/.aws/credentials:/root/.aws/credentials:ro -v /vagrant/cloud:/root --name packer_controller -h packerController -d -p 2223:22 midockerdb/packer-controller:0.1.2'
+alias poweron-pc='sudo docker run -v /home/vagrant/.aws/credentials:/root/.aws/credentials:ro -v /vagrant/cloud/images:/root/images -v /vagrant/cloud/keys:/root/keys --name packer_controller -h packerController -d -p 2223:22 midockerdb/packer-controller:0.1.2'
 alias connect-pc='ssh -p 2223 root@localhost'
 alias poweroff-pc='sudo docker stop packer_controller && sudo docker rm packer_controller'
 
 #Generate SSH Key
-alias generate-key='ssh-keygen -t ed25519 -f /vagrant/keys/tf-packer'
+alias generate-key='ssh-keygen -t ed25519 -f /vagrant/cloud/keys/tf-packer'
 
 #Fetch terraform public_ip output from container
 alias terraformipraw='sudo docker exec -it terraform_controller terraform output --state /root/instances/terraform.tfstate public_ip'

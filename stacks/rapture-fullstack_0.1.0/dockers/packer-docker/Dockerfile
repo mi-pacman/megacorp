@@ -16,8 +16,6 @@ RUN sed -i 's/#PermitRootLogin\sprohibit-password/PermitRootLogin yes/g' /etc/ss
 
 RUN echo 'root:changeme' | chpasswd
 
-RUN mkdir /root/images
-
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd","-D"]

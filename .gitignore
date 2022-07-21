@@ -2,6 +2,7 @@
 .terraform*
 terraform*
 tf-packer*
+.ash_histroy
 
 /node_modules
 /public/hot
