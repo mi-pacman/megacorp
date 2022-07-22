@@ -102,7 +102,7 @@ resource "aws_security_group" "sg_443" {
 }
 
 resource "aws_instance" "web" {
-  ami                         = "ami-03249ca93ee0a392b"
+  ami                         = "<AMI>"
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.subnet_public.id
   vpc_security_group_ids      = [aws_security_group.sg_22.id, aws_security_group.sg_80.id, aws_security_group.sg_443.id]
@@ -115,14 +115,14 @@ resource "aws_instance" "web" {
 
 resource "aws_route53_record" "domain" {
   zone_id = aws_route53_zone.primary.zone_id
-  name    = "<DOMAIN_NAME>"
+  name    = "<DOMAIN>"
   type    = "A"
   ttl     = "5"
   records = [aws_instance.web.public_ip]
 }
 
 resource "aws_route53_zone" "primary" {
-  name = "<DOMAIN_NAME>"
+  name = "<DOMAIN>"
 }
 
 output "public_ip" {
