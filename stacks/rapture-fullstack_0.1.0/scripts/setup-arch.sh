@@ -16,10 +16,13 @@ pacman -Sy  # Update repos
 pacman -S --noconfirm git # Installing Git
 pacman -S --noconfirm docker docker-compose  # Install docker and compose
 
-#Zsh Shell Installation and Configuration
+
+######################
+###ZSH_CONGIRUATION###
+######################
 pacman -S --noconfirm zsh  # Download Zsh
 git clone https://github.com/ohmyzsh/ohmyzsh.git /home/vagrant/.oh-my-zsh  # Clone Zsh config repo
-cp /home/vagrant/.oh-my-zsh/templates/zshrc.zsh-template /home/vagrant/.zshrc  # Copy over template .zshrc file
+cp /vagrant/configs/zshrc /home/vagrant/.zshrc  # Copy over template .zshrc file
 usermod --shell /bin/zsh vagrant  # Change user vagrants default shell
 
 
@@ -52,5 +55,3 @@ printf 'session   optional   pam_exec.so   stdout /usr/bin/update_motd.sh\nsessi
 sed -i 's/session    optional   pam_motd.so/#session    optional   pam_motd.so/g' /etc/pam.d/system-login  # Prevent MOTD from multiplying upon each ssh session
 
 sed -i 's/#Color/Color\nILoveCandy/g' /etc/pacman.conf  # For enabling color and pacman-styled pacman
-
-sed -i 's/robbyrussell/xiong-chiamiov-plus/g' /home/vagrant/.zshrc  # Change the default zshrc theme
