@@ -36,4 +36,4 @@ sudo systemctl stop apache2
 sudo systemctl disable apache2
 
 # Clone megacorp-proxy
-git clone https://github.com/mi-pacman/megacorp-proxy
+git clone https://github.com/mi-pacman/megacorp-proxy /home/terraform
