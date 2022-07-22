@@ -7,9 +7,6 @@ sudo apt upgrade -y
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
 sudo apt install -y -qq tmux curl wget git vim apt-transport-https ca-certificates docker.io
 
-# Clone Rapture
-git clone git@github.com:mi-pacman/rapture
-
 # Setup sudo to allow no-password sudo for "hashicorp" group and adding "terraform" user
 sudo groupadd -r hashicorp
 sudo useradd -m -s /bin/bash terraform
@@ -26,11 +23,7 @@ sudo chown -R terraform /home/terraform/.ssh
 
 # Configure traefik proxy
 sudo mkdir /etc/traefik
-sudo cp /vagrant/web-server/traefik.yml /etc/traefik/traefik.yml
-
-# Copy laravel application over
-sudo cp -r /vagrant/web-server/laravel /home/terraform
-sudo chown -R /home/terraform/laravel
+sudo cp /vagrant/configs/traefik.yml /etc/traefik/traefik.yml
 
 # Install Composer & PHP
 sudo add-apt-repository ppa:ondrej/php
@@ -42,3 +35,5 @@ sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=compose
 sudo systemctl stop apache2
 sudo systemctl disable apache2
 
+# Clone megacorp-proxy
+git clone https://github.com/mi-pacman/megacorp-proxy
