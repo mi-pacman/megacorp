@@ -6,7 +6,6 @@
 timedatectl set-timezone Australia/Adelaide  # Set timezone to Adelaide
 systemctl enable systemd-timesyncd  # Enable timesync daemon on boot
 echo "vagrant:changeme" | chpasswd  # Change vagrants password to changeme
-cp /vagrant/configs/zsh_aliases /home/vagrant/.zsh_aliases
 
 
 ######################
@@ -21,8 +20,9 @@ pacman -S --noconfirm docker docker-compose  # Install docker and compose
 ###ZSH_CONGIRUATION###
 ######################
 pacman -S --noconfirm zsh  # Download Zsh
-git clone https://github.com/ohmyzsh/ohmyzsh.git /home/vagrant/.oh-my-zsh  # Clone Zsh config repo
+git clone https://github.com/ohmyzsh/ohmyzsh.git /home/vagrant/.oh-my-zsh  # Clone zsh config repo
 cp /vagrant/configs/zshrc /home/vagrant/.zshrc  # Copy over template .zshrc file
+cp /vagrant/configs/aliases.zsh /home/vagrant/.oh-my-zsh/custom/aliases.zsh  # Copy over custom aliases
 usermod --shell /bin/zsh vagrant  # Change user vagrants default shell
 
 
