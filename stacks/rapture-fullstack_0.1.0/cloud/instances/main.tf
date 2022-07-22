@@ -114,15 +114,11 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_route53_record" "domain" {
-  zone_id = aws_route53_zone.primary.zone_id
-  name    = "<DOMAIN>"
+  zone_id = "<ZONE_ID>" 
+  name    = "<DOMAIN_NAME>"
   type    = "A"
   ttl     = "5"
   records = [aws_instance.web.public_ip]
-}
-
-resource "aws_route53_zone" "primary" {
-  name = "<DOMAIN>"
 }
 
 output "public_ip" {
