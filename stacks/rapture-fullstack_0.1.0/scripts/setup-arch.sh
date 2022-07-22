@@ -26,6 +26,14 @@ cp /vagrant/configs/aliases.zsh /home/vagrant/.oh-my-zsh/custom/aliases.zsh  # C
 usermod --shell /bin/zsh vagrant  # Change user vagrants default shell
 
 
+#######################
+###VIM_CONFIGURATION###
+#######################
+git clone --depth=1 https://github.com/amix/vimrc.git /opt/vim_runtime
+git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
+
+
 ##########################
 ###DOCKER_CONFIGURATION###
 ##########################
