@@ -15,14 +15,14 @@ source "amazon-ebs" "controller" {
   region        = var.region
   source_ami_filter {
     filters = {
-      name                = "ubuntu/images/*ubuntu-focal-20.04-amd64-server-*"
+      name                = "Fedora-Cloud-Base-34-1.2.x86_64-hvm-ap-southeast-2-standard*"
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
     most_recent = true
-    owners      = ["099720109477"]
+    owners      = ["125523088429"]
   }
-  ssh_username = "ubuntu"
+  ssh_username = "fedora"
 }
 
 # a build block invokes sources and runs provisioning steps on them.
@@ -49,6 +49,6 @@ build {
     destination = "/tmp/aliases.zsh"
   }
   provisioner "shell" {
-    script = "../scripts/setup-ubuntu.sh"
+    script = "../scripts/setup-fedora.sh"
   }
 }
