@@ -53,13 +53,8 @@ chown -R vagrant:vagrant /home/vagrant
 ############################
 ###PERSONAL_CUSTOMIZATION###
 ############################
-
 cp /vagrant/scripts/update_motd.sh /usr/bin/update_motd.sh  # Copy MOTD script to machine
-
 chmod 775 /usr/bin/update_motd.sh  # Set permissions on MOTD script
-
 printf 'session   optional   pam_exec.so   stdout /usr/bin/update_motd.sh\nsession   optional   pam_motd.so   motd=/etc/motd' >> /etc/pam.d/sshd  # Set PAM to execute script upon each new session
-
 sed -i 's/session    optional   pam_motd.so/#session    optional   pam_motd.so/g' /etc/pam.d/system-login  # Prevent MOTD from multiplying upon each ssh session
-
 sed -i 's/#Color/Color\nILoveCandy/g' /etc/pacman.conf  # For enabling color and pacman-styled pacman
