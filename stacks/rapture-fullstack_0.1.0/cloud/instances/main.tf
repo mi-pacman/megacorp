@@ -109,7 +109,7 @@ resource "aws_instance" "web" {
   associate_public_ip_address = true
 
   tags = {
-    Name = "Cloud Controller"
+    Name = "cloud-controller"
   }
 }
 

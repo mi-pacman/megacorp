@@ -33,6 +33,14 @@ build {
     source      = "../keys/tf-packer.pub"
     destination = "/tmp/tf-packer.pub"
   }
+  provisioner "file" {
+    source      = "../scripts/update_motd.sh"
+    destination = "/tmp/update_motd.sh"
+  }
+  provisioner "file" {
+    source      = "../configs/traefik.yml"
+    destination = "/tmp/traefik.yml"
+  }
   provisioner "shell" {
     script = "../scripts/setup-ubuntu.sh"
   }

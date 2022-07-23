@@ -40,14 +40,14 @@ entryPoints:
 certificatesResolvers:
   staging:
     acme:
-      email: your-email@example.com # Change this email
+      email: <EMAIL> # Change this email
       storage: /ssl-certs/acme.json
       caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
       httpChallenge:
         entryPoint: web
   production:
     acme:
-      email: your-email@example.com #Change this email
+      email: <EMAIL> #Change this email
       storage: /ssl-certs/acme.json
       caServer: "https://acme-v02.api.letsencrypt.org/directory"
       httpChallenge:
