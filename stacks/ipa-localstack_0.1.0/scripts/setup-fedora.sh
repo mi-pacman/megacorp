@@ -5,6 +5,7 @@ set -x
 ###SYSTEM_CONFIGURATION###
 ##########################
 
+timedatectl set-timezone Australia/Adelaide  # Set timezone to Adelaide
 # Install necessary dependencies
 dnf upgrade -y
 dnf install -y tmux curl wget vim apt-transport-https ca-certificates
@@ -41,7 +42,9 @@ usermod --shell /bin/zsh vagrant  # Change user vagrants default shell
 #######################
 
 yum install -y freeipa-server freeipa-server-dns nfs-utils
-reboot
-sed -i 's/preserve_hostname: false/preserve_hostname: true/g' /etc/cloud/cloud.cfg  # Set hostname to persist during reboots
+cp /vagrant/configs/hosts /etc/hosts
+printf 'ipa.example.local' > /etc/hostname
 sudo firewall-cmd --add-service=freeipa-ldap --add-service=freeipa-ldaps  # Open firewalls
 sudo firewall-cmd --add-service=freeipa-ldap --add-service=freeipa-ldaps --permanent  # Open firewalls
+
+reboot
