@@ -49,7 +49,7 @@ sudo systemctl stop apache2
 sudo systemctl disable apache2
 
 # Install laravel application
-(cd /terraform/megacorp-proxy/laravel-app && composer update && composer install)
+(cd /terraform/megacorp-proxy/laravel-app && composer update && composer install && php artisan key:generate)
 
 ########################
 ###MOTD_CUSTOMIZATION###
