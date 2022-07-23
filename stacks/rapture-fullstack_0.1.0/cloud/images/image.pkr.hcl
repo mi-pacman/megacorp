@@ -28,7 +28,6 @@ source "amazon-ebs" "controller" {
 # a build block invokes sources and runs provisioning steps on them.
 build {
   sources = ["source.amazon-ebs.controller"]
-
   provisioner "file" {
     source      = "../keys/tf-packer.pub"
     destination = "/tmp/tf-packer.pub"
@@ -40,6 +39,14 @@ build {
   provisioner "file" {
     source      = "../configs/traefik.yml"
     destination = "/tmp/traefik.yml"
+  }
+  provisioner "file" {
+    source      = "../configs/zshrc"
+    destination = "/tmp/zshrc"
+  }
+  provisioner "file" {
+    source      = "../configs/aliases.zsh"
+    destination = "/tmp/aliases.zsh"
   }
   provisioner "shell" {
     script = "../scripts/setup-ubuntu.sh"
