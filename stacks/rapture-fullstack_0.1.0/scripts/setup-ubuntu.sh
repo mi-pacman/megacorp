@@ -29,11 +29,12 @@ sudo chown -R terraform /home/terraform/.ssh
 ###################################
 ###WEB_APPLICATION_CONFIGURATION###
 ###################################
+# Create application directory, clone external repo and set permissions
 sudo mkdir /terraform
 sudo git clone https://github.com/mi-pacman/megacorp-proxy /terraform/megacorp-proxy
 sudo chown -R terraform:terraform /terraform
 
-# Configure traefik proxy
+# Copy traefik proxy configuration
 sudo mkdir /etc/traefik
 sudo cp /tmp/traefik.yml /etc/traefik/traefik.yml
 
@@ -47,10 +48,12 @@ sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=compose
 sudo systemctl stop apache2
 sudo systemctl disable apache2
 
+# Install laravel application
 
-############################
+
+########################
 ###MOTD_CUSTOMIZATION###
-############################
+########################
 sudo cp /tmp/update_motd.sh /usr/bin/update_motd.sh  # Copy MOTD script to machine
 sudo chmod 775 /usr/bin/update_motd.sh  # Set permissions on MOTD script
 sudo sed -i 's;session    optional     pam_motd.so  motd=/etd/motd;#session    optional     pam_motd.so  motd=/etc/motd;g' /etc/pam.d/sshd  # Set PAM to execute script upon each new session
@@ -62,16 +65,17 @@ printf 'session   optional   pam_exec.so   stdout /usr/bin/update_motd.sh\nsessi
 #######################
 ###VIM_CONFIGURATION###
 #######################
-git clone --depth=1 https://github.com/amix/vimrc.git /opt/vim_runtime
-git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
+sudo git clone --depth=1 https://github.com/amix/vimrc.git /opt/vim_runtime
+sudo git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sudo sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
 
 
 ######################
 ###ZSH_CONGIRUATION###
 ######################
-pacman -S --noconfirm zsh  # Download Zsh
-git clone https://github.com/ohmyzsh/ohmyzsh.git /home/terraform/.oh-my-zsh  # Clone zsh config repo
-cp /tmp/zshrc /home/terraform/.zshrc  # Copy over template .zshrc file
-cp /tmp/aliases.zsh /home/terraform/.oh-my-zsh/custom/aliases.zsh  # Copy over custom aliases
-usermod --shell /bin/zsh terraform  # Change user vagrants default shell
+sudo apt-get install -y zsh  # Download Zsh
+sudo git clone https://github.com/ohmyzsh/ohmyzsh.git /home/terraform/.oh-my-zsh  # Clone zsh config repo
+sudo cp /tmp/zshrc /home/terraform/.zshrc  # Copy over template .zshrc file
+sudo cp /tmp/aliases.zsh /home/terraform/.oh-my-zsh/custom/aliases.zsh  # Copy over custom aliases
+sudo usermod --shell /bin/zsh terraform  # Change user terraforms default shell
+sudo chown -R terraform:terraform /home/terraform/.oh-my-zsh /home/terraform/.zshrc
