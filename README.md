@@ -1,4 +1,4 @@
-# Rapture by Megacorp Industries
+# Megacorp Industries
 ```
         ___________ 
        /           \ 
@@ -12,7 +12,7 @@
 |________|/     \|________|
 
 ```
-Welcome to Rapture! An underground alternative for the 21st century.
+Welcome to Megacorp! An underground alternative for the 21st century.
 
 This project has the goal at streamlining workflows for provisioning and providing full-stack privacy-respecting solutions.
 
