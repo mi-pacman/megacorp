@@ -41,10 +41,10 @@ usermod --shell /bin/zsh vagrant  # Change user vagrants default shell
 ###IPA_CONFIGURATION###
 #######################
 
-yum install -y freeipa-server freeipa-server-dns nfs-utils
-cp /vagrant/configs/hosts /etc/hosts
-printf 'ipa.example.local' > /etc/hostname
+yum install -y freeipa-server freeipa-server-dns nfs-utils  # Fetch IPA packages and dependencies
+cp /vagrant/configs/hosts /etc/hosts  # Copy over hosts file template
+printf 'ipa.example.local' > /etc/hostname  # Set generic host and domain name
 sudo firewall-cmd --add-service=freeipa-ldap --add-service=freeipa-ldaps  # Open firewalls
 sudo firewall-cmd --add-service=freeipa-ldap --add-service=freeipa-ldaps --permanent  # Open firewalls
-
+sed -i 's;net.ipv6.conf.all.disable_ipv6 = 1;net.ipv6.conf.all.disable_ipv6 = 0\nnet.ipv6.conf.lo.disable_ipv6 = 0;g' /etc/sysctl.conf
 reboot

@@ -6,4 +6,5 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "ipa-local-controller"
   config.vm.synced_folder "./", "/vagrant"
   config.vm.provision "shell", path: "scripts/setup-fedora.sh"
+  config.vm.network "public_network"
 end
