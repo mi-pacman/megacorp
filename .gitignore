@@ -1,15 +1,5 @@
-.vagrant
 .terraform*
 terraform*
-tf-packer*
-.aws*
 .ash_histroy
 
-# For whonix-localstack
-.DS_Store
-*.sw[o|p]
-*.tmp*.box
-*.ova
-*virtualbox*
-*output*
-packer_cache
+Packer/KVM/Windows/CORE/windows_2022-qemu
