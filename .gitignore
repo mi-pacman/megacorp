@@ -1,5 +1,3 @@
 .terraform*
 terraform*
 .ash_histroy
-
-Packer/KVM/Windows/CORE/windows_2022-qemu
